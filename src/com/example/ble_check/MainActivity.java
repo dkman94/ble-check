@@ -53,17 +53,18 @@ public class MainActivity extends Activity implements  OnInitListener{
 	 
 	 	//onInit method allows result of Bluetooth 4.0 Report to be spoken
 	 public void onInit(int code) {
-		 	if(gotBLE == 1)  {
-		 			say("You've got Bluetooth 4.0!");     
+		if(gotBLE == 1)  {
+		 		say("You've got Bluetooth 4.0!");     
 		  }
-		    else {
+		else {
 		    		say("Darn. Your phone does not support Bluetooth 4.0.");
 		  }
 	}
 	 
 	 	//onDestroy() makes sure to end the spoken result if the app if ended by the system
 	 protected void onDestroy() {
-		 	if(talker != null) {
+		if(talker != null){
+			//after app has been close by system. Stop the speech and then shut it down
 		 		talker.stop();
 		 		talker.shutdown();
 		 }
